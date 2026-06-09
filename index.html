@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limbo - Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-top">
+                <h1 class="game-title">LIMBO</h1>
+                <div class="user-info">
+                    <span class="username" id="username">Player</span>
+                    <span class="rank" id="userRank">Rank: --</span>
+                </div>
+            </div>
+            <p class="subtitle">Predict if the next number will go higher or lower</p>
+        </header>
+
+        <div class="main-wrapper">
+            <!-- Leaderboard Sidebar -->
+            <aside class="leaderboard-sidebar">
+                <div class="leaderboard-header">
+                    <h3>🏆 TOP PLAYERS</h3>
+                </div>
+                <div class="leaderboard-list" id="leaderboard">
+                    <p class="loading">Loading rankings...</p>
+                </div>
+            </aside>
+
+            <!-- Main Game Area -->
+            <main class="game-area">
+                <div class="game-stats">
+                    <div class="stat-box">
+                        <span class="stat-label">Balance</span>
+                        <span class="stat-value" id="balance">$1,000.00</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">Multiplier</span>
+                        <span class="stat-value multiplier" id="multiplier">0.00x</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">Profit</span>
+                        <span class="stat-value profit" id="profit">$0.00</span>
+                    </div>
+                </div>
+
+                <div class="game-board">
+                    <div class="current-number-section">
+                        <p class="label">Current Number</p>
+                        <div class="current-number" id="currentNumber">--</div>
+                    </div>
+
+                    <div class="prediction-section">
+                        <p class="label">Your Prediction</p>
+                        <div class="button-group">
+                            <button class="btn btn-higher" id="btnHigher">
+                                <span class="arrow">▲</span>
+                                HIGHER
+                            </button>
+                            <button class="btn btn-lower" id="btnLower">
+                                <span class="arrow">▼</span>
+                                LOWER
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="bet-section">
+                        <label for="betAmount">Bet Amount</label>
+                        <div class="bet-input-group">
+                            <button class="bet-preset" data-amount="10">$10</button>
+                            <button class="bet-preset" data-amount="50">$50</button>
+                            <button class="bet-preset" data-amount="100">$100</button>
+                            <button class="bet-preset" data-amount="500">$500</button>
+                        </div>
+                        <div class="custom-bet-group">
+                            <input type="number" id="betAmount" class="bet-input" placeholder="Custom amount" value="10" min="1" max="10000">
+                            <button class="btn-custom-set" id="btnSetBet">SET</button>
+                        </div>
+                    </div>
+
+                    <div class="controls">
+                        <button class="btn btn-play" id="btnPlay">PLAY</button>
+                        <button class="btn btn-cashout" id="btnCashout" disabled>CASH OUT</button>
+                        <button class="btn btn-reset" id="btnReset">RESET</button>
+                    </div>
+
+                    <div class="game-result" id="gameResult" style="display: none;">
+                        <p class="result-text" id="resultText"></p>
+                    </div>
+                </div>
+
+                <div class="history">
+                    <h3>Recent Results</h3>
+                    <div class="history-list" id="historyList">
+                        <p class="empty">No results yet</p>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Leaderboard Modal -->
+    <div class="leaderboard-modal" id="leaderboardModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🏆 LEADERBOARD</h2>
+                <button class="modal-close" id="closeLeaderboard">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="leaderboard-full" id="leaderboardFull"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Share Modal -->
+    <div class="share-modal" id="shareModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🎉 You Won!</h2>
+                <button class="modal-close" id="closeShare">&times;</button>
+            </div>
+            <div class="modal-body share-body">
+                <p id="shareText"></p>
+                <button class="btn btn-share" id="btnShare">Share Your Win</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
